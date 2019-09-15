@@ -22,6 +22,8 @@ from sklearn import linear_model
 from sklearn import ensemble
 from sklearn import metrics
 from sklearn import model_selection
+import xgboost as xgb
+
 
 def preprocessing_titanic(data_frame):
     # 1. 年齢の欠損値は中央値で埋める
@@ -204,8 +206,12 @@ test_x = prepare_test_x(test_df)
 # clf_result = random_forest.fit(train_X, train_y)
 
 # 勾配ブースティングで学習
-forest = ensemble.GradientBoostingClassifier(n_estimators=5000, random_state=0)
-clf_result = forest.fit(train_X, train_y)
+# forest = ensemble.GradientBoostingClassifier(n_estimators=5000, random_state=0)
+# clf_result = forest.fit(train_X, train_y)
+
+# xgブースティングで学習
+gbm = xgb.XGBClassifier(n_estimators=1000, max_depth=5, gamma=0.1, alpha=0.5, random_state=0)
+clf_result = gbm.fit(train_X, train_y)
 
 # 予測結果の算出
 predict_survived_list = clf_result.predict(test_x).astype(int)
@@ -215,6 +221,10 @@ predict_survived_list = clf_result.predict(test_x).astype(int)
 train_survived_list = clf_result.predict(train_X)
 ac_score = metrics.accuracy_score(train_y, train_survived_list)
 print(f'正解率：{ac_score}')
+
+# K分割交差検証で性能を評価する---------------------
+k_scores = model_selection.cross_val_score(gbm, train_X, train_y, cv=12)
+print(f'K分割交差検証での評価：{k_scores.mean()}')
 
 # 予測値をcsvに書き出し
 output_prediction_to_csv(test_df_all, predict_survived_list)
