@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea549d4a-d792-4139-b98f-ddcc719a9630" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result_predicted/submission.csv" beforeDir="false" afterPath="$PROJECT_DIR$/result_predicted/submission.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/titanic.py" beforeDir="false" afterPath="$PROJECT_DIR$/titanic.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/titanic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="197" column="63" selection-start-line="197" selection-start-column="63" selection-end-line="197" selection-end-column="63" />
+            <state relative-caret-position="191">
+              <caret line="205" column="14" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
               <folding>
                 <element signature="e#125#144#0" expanded="true" />
               </folding>
@@ -264,8 +263,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/titanic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="197" column="63" selection-start-line="197" selection-start-column="63" selection-end-line="197" selection-end-column="63" />
+        <state relative-caret-position="191">
+          <caret line="205" column="14" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
           <folding>
             <element signature="e#125#144#0" expanded="true" />
           </folding>

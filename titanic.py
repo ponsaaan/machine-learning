@@ -111,6 +111,15 @@ def prepare_test_x(test_df):
     return test_x
 
 
+def output_prediction_to_csv(original_test_set, predict_survived_list):
+    # 提出用のデータを用意
+    submission_df = original_test_set
+    submission_df['Survived'] = predict_survived_list
+
+    # 予測結果のCSV出力
+    submission_df[['PassengerId', 'Survived']].to_csv('result_predicted/submission.csv', index=False)
+
+
 # 1. データセットの読み込み
 pd.set_option('display.max_column', 100)
 pd.set_option('display.max_rows', 100)
@@ -190,12 +199,12 @@ test_x = prepare_test_x(test_df)
 # }]
 # gs = model_selection.grid_search.GridSearchCV()
 
-# ランダムフォレスト
+# ランダムフォレストで学習
 # random_forest = ensemble.RandomForestClassifier(n_estimators=5000, max_depth=6, random_state=0)
 # clf_result = random_forest.fit(train_X, train_y)
 
-# 勾配ブースティング
-forest = ensemble.GradientBoostingClassifier(n_estimators=1000, random_state=0)
+# 勾配ブースティングで学習
+forest = ensemble.GradientBoostingClassifier(n_estimators=5000, random_state=0)
 clf_result = forest.fit(train_X, train_y)
 
 # 予測結果の算出
@@ -207,11 +216,6 @@ train_survived_list = clf_result.predict(train_X)
 ac_score = metrics.accuracy_score(train_y, train_survived_list)
 print(f'正解率：{ac_score}')
 
-# 提出用のデータを用意
-submission_df = test_df_all
-print(test_df_all)
-print(test_df_all.shape)
-submission_df['Survived'] = predict_survived_list
-print(submission_df[['PassengerId', 'Survived']])
-# 予測結果のCSV出力
-submission_df[['PassengerId', 'Survived']].to_csv('result_predicted/submission.csv', index=False)
+# 予測値をcsvに書き出し
+output_prediction_to_csv(test_df_all, predict_survived_list)
+
